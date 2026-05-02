@@ -1,2 +1,4 @@
 recipe_manager/log/
 recipe_manager/tmp/
+recipe_manager/storage/*.sqlite3
+recipe_manager/storage/*.sqlite3-*
