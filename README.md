@@ -85,5 +85,3 @@ ruby bin/rails test
 - `encacahuatado.json`
 - `gluten_teriyaki.json`
 - an inline repeated-ingredient recipe that validates inferred step mapping
-
-The old `weeknight-tomato-pasta` seed is intentionally removed.
