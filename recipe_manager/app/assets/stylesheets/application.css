@@ -109,6 +109,7 @@ input[type="submit"] {
 
 .trash-button {
   color: #243b3f;
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "Twemoji Mozilla", sans-serif;
   font-size: 1.45rem;
   font-weight: 900;
   text-shadow: 0 0 0 #243b3f;
