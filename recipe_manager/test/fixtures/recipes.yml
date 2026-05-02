@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stable_id: recipe-one
+  title: MyString
+  version: MyString
+  language: MyString
+  diet: MyText
+  tags: MyText
+  equipment: MyText
+  nutrition_notes: MyText
+  servings_count: 9.99
+  servings_unit: MyString
+  yield_amount: 9.99
+  yield_unit: MyString
+  yield_description: MyString
+  source_created_from: MyString
+  source_notes: MyText
+
+two:
+  stable_id: recipe-two
+  title: MyString
+  version: MyString
+  language: MyString
+  diet: MyText
+  tags: MyText
+  equipment: MyText
+  nutrition_notes: MyText
+  servings_count: 9.99
+  servings_unit: MyString
+  yield_amount: 9.99
+  yield_unit: MyString
+  yield_description: MyString
+  source_created_from: MyString
+  source_notes: MyText

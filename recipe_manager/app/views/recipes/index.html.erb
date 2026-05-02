@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Recipes" %>
+
+<h1>Recipes</h1>
+
+<div class="page-actions">
+  <%= link_to "New recipe", new_recipe_path, class: "button primary" %>
+</div>
+
+<div id="recipes" class="recipe-grid">
+  <% if @recipes.any? %>
+    <% @recipes.each do |recipe| %>
+      <article class="recipe-card">
+        <div class="recipe-card-heading">
+          <h2><%= link_to recipe.title, recipe %></h2>
+        </div>
+        <% if @in_progress_recipe_ids.include?(recipe.id) %>
+          <div class="recipe-status-row">
+            <span class="status-badge">In progress</span>
+          </div>
+        <% end %>
+        <dl>
+          <dt>Version</dt>
+          <dd><%= recipe.version %></dd>
+          <dt>Language</dt>
+          <dd><%= recipe.language.presence || "Not set" %></dd>
+          <dt>Ingredients</dt>
+          <dd><%= recipe.recipe_ingredients.size %></dd>
+          <dt>Steps</dt>
+          <dd><%= recipe.steps.size %></dd>
+        </dl>
+      </article>
+    <% end %>
+  <% else %>
+    <p>No recipes yet.</p>
+  <% end %>
+</div>

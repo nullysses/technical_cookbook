@@ -1,0 +1,11 @@
+<% content_for :title, "New substitution" %>
+
+<h1>New substitution</h1>
+
+<%= render "form", substitution: @substitution %>
+
+<br>
+
+<div>
+  <%= link_to "Back to substitutions", substitutions_path %>
+</div>

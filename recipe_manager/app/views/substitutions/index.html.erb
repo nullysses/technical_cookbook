@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Substitutions" %>
+
+<h1>Substitutions</h1>
+
+<div id="substitutions">
+  <% @substitutions.each do |substitution| %>
+    <%= render substitution %>
+    <p>
+      <%= link_to "Show this substitution", substitution %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New substitution", new_substitution_path %>

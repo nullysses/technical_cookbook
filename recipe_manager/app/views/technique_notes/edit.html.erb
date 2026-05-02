@@ -1,0 +1,12 @@
+<% content_for :title, "Editing technique note" %>
+
+<h1>Editing technique note</h1>
+
+<%= render "form", technique_note: @technique_note %>
+
+<br>
+
+<div>
+  <%= link_to "Show this technique note", @technique_note %> |
+  <%= link_to "Back to technique notes", technique_notes_path %>
+</div>

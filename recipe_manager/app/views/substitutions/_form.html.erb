@@ -1,0 +1,27 @@
+<%= form_with(model: substitution) do |form| %>
+  <% if substitution.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(substitution.errors.count, "error") %> prohibited this substitution from being saved:</h2>
+
+      <ul>
+        <% substitution.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :recipe_id, style: "display: block" %>
+    <%= form.text_field :recipe_id %>
+  </div>
+
+  <div>
+    <%= form.label :ingredient, style: "display: block" %>
+    <%= form.text_field :ingredient %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

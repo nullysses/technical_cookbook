@@ -1,0 +1,52 @@
+<div id="<%= dom_id recipe_ingredient %>">
+  <div>
+    <strong>Recipe:</strong>
+    <%= link_to recipe_ingredient.recipe.title, recipe_ingredient.recipe %>
+  </div>
+
+  <div>
+    <strong>Ingredient:</strong>
+    <%= link_to recipe_ingredient.ingredient.name, recipe_ingredient.ingredient %>
+  </div>
+
+  <div>
+    <strong>Step:</strong>
+    <%= recipe_ingredient.step ? "#{recipe_ingredient.step.order}. #{recipe_ingredient.step.title.presence || recipe_ingredient.step.action.truncate(50)}" : "None" %>
+  </div>
+
+  <div>
+    <strong>Amount:</strong>
+    <%= recipe_ingredient.amount %>
+  </div>
+
+  <div>
+    <strong>Unit:</strong>
+    <%= recipe_ingredient.unit %>
+  </div>
+
+  <div>
+    <strong>State:</strong>
+    <%= recipe_ingredient.state %>
+  </div>
+
+  <div>
+    <strong>Preparation:</strong>
+    <%= recipe_ingredient.preparation %>
+  </div>
+
+  <div>
+    <strong>Section:</strong>
+    <%= recipe_ingredient.section %>
+  </div>
+
+  <div>
+    <strong>Optional:</strong>
+    <%= recipe_ingredient.optional %>
+  </div>
+
+  <div>
+    <strong>Notes:</strong>
+    <%= recipe_ingredient.notes %>
+  </div>
+
+</div>

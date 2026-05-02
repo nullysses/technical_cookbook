@@ -1,0 +1,171 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="recipe-show-header">
+  <h1><%= @recipe.title %></h1>
+
+  <div class="page-actions">
+    <%= link_to "Edit recipe", edit_recipe_path(@recipe), class: "button" %>
+    <%= link_to "Back to recipes", recipes_path, class: "button" %>
+  </div>
+</div>
+
+<div class="recipe-show-layout">
+  <main class="recipe-main">
+    <%= render "recipe_ingredients_section" %>
+
+    <%= render "steps_section" %>
+
+    <section class="detail-section">
+      <div class="section-heading">
+        <h2>Technique Notes</h2>
+        <%= link_to "Add note", new_technique_note_path, class: "button" %>
+      </div>
+      <div class="inline-detail-list">
+        <% @technique_notes.each do |note| %>
+          <details class="inline-expander">
+            <summary>
+              <span><%= note.topic %></span>
+            </summary>
+
+            <div class="inline-expander-body">
+              <p><%= note.note %></p>
+              <%= link_to "Edit note", edit_technique_note_path(note), class: "button" %>
+            </div>
+          </details>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <div class="section-heading">
+        <h2>Substitutions</h2>
+        <%= link_to "Add substitution", new_substitution_path, class: "button" %>
+      </div>
+      <div class="inline-detail-list">
+        <% @substitutions.each do |substitution| %>
+          <details class="inline-expander">
+            <summary>
+              <span><%= substitution.ingredient %></span>
+            </summary>
+
+            <div class="inline-expander-body">
+              <% if substitution.substitutes.any? %>
+                <div class="substitution-grid">
+                  <div class="substitution-grid-heading">Name</div>
+                  <div class="substitution-grid-heading">Ratio</div>
+                  <div class="substitution-grid-heading">Effect</div>
+                  <% substitution.substitutes.each do |substitute| %>
+                    <div><%= substitute.name %></div>
+                    <div><%= substitute.ratio.presence || "Not set" %></div>
+                    <div>
+                      <%= substitute.effect.presence || "Not set" %>
+                      <%= link_to "Edit", edit_substitute_path(substitute), class: "button compact-button" %>
+                    </div>
+                  <% end %>
+                </div>
+              <% else %>
+                <p>No substitutes listed.</p>
+              <% end %>
+
+              <%= link_to "Edit substitution", edit_substitution_path(substitution), class: "button" %>
+            </div>
+          </details>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <div class="section-heading">
+        <h2>Adjustments</h2>
+        <%= link_to "Add adjustment", new_adjustment_path, class: "button" %>
+      </div>
+      <div class="inline-detail-list">
+        <% @adjustments.each do |adjustment| %>
+          <details class="inline-expander">
+            <summary>
+              <span><%= adjustment.condition.truncate(120) %></span>
+            </summary>
+
+            <div class="inline-expander-body">
+              <dl>
+                <dt>Condition</dt>
+                <dd><%= adjustment.condition %></dd>
+                <dt>Fix</dt>
+                <dd><%= adjustment.fix %></dd>
+              </dl>
+
+              <%= link_to "Edit adjustment", edit_adjustment_path(adjustment), class: "button" %>
+            </div>
+          </details>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="detail-section">
+      <div class="section-heading">
+        <h2>Storage</h2>
+        <%= link_to "Add storage", new_storage_path, class: "button" unless @storage %>
+      </div>
+      <% if @storage %>
+        <details class="inline-expander">
+          <summary>
+            <span>Storage details</span>
+          </summary>
+
+          <div class="inline-expander-body">
+            <dl>
+              <% if @storage.refrigerator_duration.present? || @storage.refrigerator_unit.present? %>
+                <dt>Refrigerator</dt>
+                <dd><%= [@storage.refrigerator_duration, @storage.refrigerator_unit].compact_blank.join(" ") %></dd>
+              <% end %>
+
+              <% if @storage.freezer_duration.present? || @storage.freezer_unit.present? %>
+                <dt>Freezer</dt>
+                <dd><%= [@storage.freezer_duration, @storage.freezer_unit].compact_blank.join(" ") %></dd>
+              <% end %>
+
+              <% if @storage.reheat.present? %>
+                <dt>Reheat</dt>
+                <dd><%= @storage.reheat %></dd>
+              <% end %>
+            </dl>
+
+            <%= link_to "Edit storage", edit_storage_path(@storage), class: "button" %>
+          </div>
+        </details>
+      <% else %>
+        <p>No storage details yet.</p>
+      <% end %>
+    </section>
+
+    <div class="danger-zone">
+      <%= button_to "Destroy this recipe", @recipe, method: :delete, class: "button danger" %>
+    </div>
+  </main>
+
+  <aside class="recipe-sidebar" aria-label="Recipe details">
+    <h2>Details</h2>
+    <dl>
+      <dt>Version</dt>
+      <dd><%= @recipe.version %></dd>
+      <dt>Language</dt>
+      <dd><%= @recipe.language.presence || "Not set" %></dd>
+      <dt>Diet</dt>
+      <dd><%= @recipe.diet.presence || "Not set" %></dd>
+      <dt>Tags</dt>
+      <dd><%= @recipe.tags.presence || "Not set" %></dd>
+      <dt>Equipment</dt>
+      <dd><%= @recipe.equipment.presence || "Not set" %></dd>
+      <dt>Nutrition Notes</dt>
+      <dd><%= @recipe.nutrition_notes.presence || "Not set" %></dd>
+      <dt>Servings</dt>
+      <dd><%= [@recipe.servings_count, @recipe.servings_unit].compact_blank.join(" ").presence || "Not set" %></dd>
+      <dt>Yield</dt>
+      <dd><%= [@recipe.yield_amount, @recipe.yield_unit, @recipe.yield_description].compact_blank.join(" ").presence || "Not set" %></dd>
+      <dt>Source</dt>
+      <dd><%= @recipe.source_created_from.presence || "Not set" %></dd>
+      <dt>Source Notes</dt>
+      <dd><%= @recipe.source_notes.presence || "Not set" %></dd>
+    </dl>
+  </aside>
+</div>

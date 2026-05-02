@@ -1,0 +1,11 @@
+<% content_for :title, "New adjustment" %>
+
+<h1>New adjustment</h1>
+
+<%= render "form", adjustment: @adjustment %>
+
+<br>
+
+<div>
+  <%= link_to "Back to adjustments", adjustments_path %>
+</div>

@@ -1,0 +1,47 @@
+<%= form_with(model: storage) do |form| %>
+  <% if storage.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(storage.errors.count, "error") %> prohibited this storage from being saved:</h2>
+
+      <ul>
+        <% storage.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :recipe_id, style: "display: block" %>
+    <%= form.text_field :recipe_id %>
+  </div>
+
+  <div>
+    <%= form.label :refrigerator_duration, style: "display: block" %>
+    <%= form.text_field :refrigerator_duration %>
+  </div>
+
+  <div>
+    <%= form.label :refrigerator_unit, style: "display: block" %>
+    <%= form.text_field :refrigerator_unit %>
+  </div>
+
+  <div>
+    <%= form.label :freezer_duration, style: "display: block" %>
+    <%= form.text_field :freezer_duration %>
+  </div>
+
+  <div>
+    <%= form.label :freezer_unit, style: "display: block" %>
+    <%= form.text_field :freezer_unit %>
+  </div>
+
+  <div>
+    <%= form.label :reheat, style: "display: block" %>
+    <%= form.textarea :reheat %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

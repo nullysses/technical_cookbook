@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @substitution %>
+
+<div>
+  <%= link_to "Edit this substitution", edit_substitution_path(@substitution) %> |
+  <%= link_to "Back to substitutions", substitutions_path %>
+
+  <%= button_to "Destroy this substitution", @substitution, method: :delete %>
+</div>

@@ -1,0 +1,44 @@
+<section id="recipe_ingredients_section" class="detail-section">
+  <div class="section-heading">
+    <h2>Ingredients</h2>
+    <%= link_to "Add recipe ingredient", new_recipe_ingredient_path, class: "button" %>
+  </div>
+  <table class="ingredient-progress-table">
+    <thead>
+      <tr>
+        <th><span class="visually-hidden">Delete</span></th>
+        <th>Section</th>
+        <th>Ingredient</th>
+        <th>Amount</th>
+        <th>Procured</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe_ingredients.each do |recipe_ingredient| %>
+        <% procured = @procured_recipe_ingredient_ids.include?(recipe_ingredient.id) %>
+        <tr>
+          <td class="delete-cell">
+            <%= button_to recipe_ingredient_path(recipe_ingredient), method: :delete, class: "icon-button trash-button", form: { data: { turbo_confirm: "Remove #{recipe_ingredient.ingredient.name} from this recipe?" } }, aria: { label: "Remove #{recipe_ingredient.ingredient.name} from this recipe" } do %>
+              &#128465;
+            <% end %>
+          </td>
+          <td>
+            <%= recipe_ingredient.section.presence || "Not set" %>
+          </td>
+          <td class="<%= "is-done" if procured %>">
+            <%= link_to recipe_ingredient.ingredient.name, recipe_ingredient %>
+            <%= "(#{recipe_ingredient.preparation})" if recipe_ingredient.preparation.present? %>
+          </td>
+          <td>
+            <%= [recipe_ingredient.amount, recipe_ingredient.unit].compact_blank.join(" ").presence || "Not set" %>
+          </td>
+          <td class="procured-cell">
+            <%= form_with url: recipe_ingredient_progress_path(recipe_ingredient), method: :patch, class: "progress-form" do |form| %>
+              <%= form.check_box :done, checked: procured, onchange: "this.form.requestSubmit()", aria: { label: "Mark #{recipe_ingredient.ingredient.name} procured" } %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

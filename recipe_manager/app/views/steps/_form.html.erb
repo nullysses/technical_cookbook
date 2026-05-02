@@ -1,0 +1,97 @@
+<%= form_with(model: step) do |form| %>
+  <% if step.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(step.errors.count, "error") %> prohibited this step from being saved:</h2>
+
+      <ul>
+        <% step.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :recipe_id, style: "display: block" %>
+    <%= form.text_field :recipe_id %>
+  </div>
+
+  <div>
+    <%= form.label :order, style: "display: block" %>
+    <%= form.number_field :order %>
+  </div>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :action, style: "display: block" %>
+    <%= form.textarea :action %>
+  </div>
+
+  <div>
+    <%= form.label :time_amount, style: "display: block" %>
+    <%= form.text_field :time_amount %>
+  </div>
+
+  <div>
+    <%= form.label :time_unit, style: "display: block" %>
+    <%= form.text_field :time_unit %>
+  </div>
+
+  <div>
+    <%= form.label :time_per_side, style: "display: block" %>
+    <%= form.checkbox :time_per_side %>
+  </div>
+
+  <div>
+    <%= form.label :time_description, style: "display: block" %>
+    <%= form.text_field :time_description %>
+  </div>
+
+  <div>
+    <%= form.label :temperature_amount, style: "display: block" %>
+    <%= form.text_field :temperature_amount %>
+  </div>
+
+  <div>
+    <%= form.label :temperature_unit, style: "display: block" %>
+    <%= form.text_field :temperature_unit %>
+  </div>
+
+  <div>
+    <%= form.label :temperature_description, style: "display: block" %>
+    <%= form.text_field :temperature_description %>
+  </div>
+
+  <div>
+    <%= form.label :heat_level, style: "display: block" %>
+    <%= form.text_field :heat_level %>
+  </div>
+
+  <div>
+    <%= form.label :targets, style: "display: block" %>
+    <%= form.textarea :targets %>
+  </div>
+
+  <div>
+    <%= form.label :risk_points, style: "display: block" %>
+    <%= form.textarea :risk_points %>
+  </div>
+
+  <div>
+    <%= form.label :notes, style: "display: block" %>
+    <%= form.textarea :notes %>
+  </div>
+
+  <div>
+    <%= form.label :optional_data, style: "display: block" %>
+    <%= form.textarea :optional_data %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

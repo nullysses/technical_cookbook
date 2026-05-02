@@ -1,0 +1,70 @@
+<section id="steps_section" class="detail-section">
+  <div class="section-heading">
+    <h2>Steps</h2>
+    <%= link_to "Add step", new_step_path, class: "button" %>
+  </div>
+  <div class="step-list">
+    <% @steps.each do |step| %>
+      <% done = @done_step_ids.include?(step.id) %>
+      <details class="step-expander">
+        <summary>
+          <%= form_with url: step_progress_path(step), method: :patch, class: "progress-form summary-progress-form" do |form| %>
+            <%= form.check_box :done, checked: done, onchange: "this.form.requestSubmit()" %>
+          <% end %>
+          <span class="step-number"><%= step.order %></span>
+          <span class="<%= "is-done" if done %>"><%= step.title.presence || step.action.truncate(80) %></span>
+        </summary>
+
+        <div class="step-body">
+          <p><%= step.action %></p>
+
+          <dl>
+            <% if step.time_amount.present? || step.time_unit.present? || step.time_description.present? %>
+              <dt>Time</dt>
+              <dd>
+                <%= [step.time_amount, step.time_unit].compact_blank.join(" ") %>
+                <%= "(per side)" if step.time_per_side? %>
+                <%= "- #{step.time_description}" if step.time_description.present? %>
+              </dd>
+            <% end %>
+
+            <% if step.temperature_amount.present? || step.temperature_unit.present? || step.temperature_description.present? %>
+              <dt>Temperature</dt>
+              <dd>
+                <%= [step.temperature_amount, step.temperature_unit].compact_blank.join(" ") %>
+                <%= "- #{step.temperature_description}" if step.temperature_description.present? %>
+              </dd>
+            <% end %>
+
+            <% if step.heat_level.present? %>
+              <dt>Heat</dt>
+              <dd><%= step.heat_level %></dd>
+            <% end %>
+
+            <% if step.targets.present? %>
+              <dt>Targets</dt>
+              <dd><%= step.targets %></dd>
+            <% end %>
+
+            <% if step.risk_points.present? %>
+              <dt>Risk points</dt>
+              <dd><%= step.risk_points %></dd>
+            <% end %>
+
+            <% if step.notes.present? %>
+              <dt>Notes</dt>
+              <dd><%= step.notes %></dd>
+            <% end %>
+
+            <% if step.optional_data.present? %>
+              <dt>Optional data</dt>
+              <dd><%= step.optional_data %></dd>
+            <% end %>
+          </dl>
+
+          <%= link_to "Edit step", edit_step_path(step), class: "button" %>
+        </div>
+      </details>
+    <% end %>
+  </div>
+</section>

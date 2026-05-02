@@ -1,0 +1,87 @@
+<%= form_with(model: recipe) do |form| %>
+  <% if recipe.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+        <% recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :version, style: "display: block" %>
+    <%= form.text_field :version %>
+  </div>
+
+  <div>
+    <%= form.label :language, style: "display: block" %>
+    <%= form.text_field :language %>
+  </div>
+
+  <div>
+    <%= form.label :diet, style: "display: block" %>
+    <%= form.textarea :diet %>
+  </div>
+
+  <div>
+    <%= form.label :tags, style: "display: block" %>
+    <%= form.textarea :tags %>
+  </div>
+
+  <div>
+    <%= form.label :equipment, style: "display: block" %>
+    <%= form.textarea :equipment %>
+  </div>
+
+  <div>
+    <%= form.label :nutrition_notes, style: "display: block" %>
+    <%= form.textarea :nutrition_notes %>
+  </div>
+
+  <div>
+    <%= form.label :servings_count, style: "display: block" %>
+    <%= form.text_field :servings_count %>
+  </div>
+
+  <div>
+    <%= form.label :servings_unit, style: "display: block" %>
+    <%= form.text_field :servings_unit %>
+  </div>
+
+  <div>
+    <%= form.label :yield_amount, style: "display: block" %>
+    <%= form.text_field :yield_amount %>
+  </div>
+
+  <div>
+    <%= form.label :yield_unit, style: "display: block" %>
+    <%= form.text_field :yield_unit %>
+  </div>
+
+  <div>
+    <%= form.label :yield_description, style: "display: block" %>
+    <%= form.text_field :yield_description %>
+  </div>
+
+  <div>
+    <%= form.label :source_created_from, style: "display: block" %>
+    <%= form.text_field :source_created_from %>
+  </div>
+
+  <div>
+    <%= form.label :source_notes, style: "display: block" %>
+    <%= form.textarea :source_notes %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

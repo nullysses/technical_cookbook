@@ -1,0 +1,67 @@
+<%= form_with(model: recipe_ingredient) do |form| %>
+  <% if recipe_ingredient.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(recipe_ingredient.errors.count, "error") %> prohibited this recipe_ingredient from being saved:</h2>
+
+      <ul>
+        <% recipe_ingredient.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :recipe_id, style: "display: block" %>
+    <%= form.collection_select :recipe_id, @recipes, :id, :title, prompt: "Choose a recipe" %>
+  </div>
+
+  <div>
+    <%= form.label :ingredient_id, style: "display: block" %>
+    <%= form.collection_select :ingredient_id, @ingredients, :id, :name, prompt: "Choose an ingredient" %>
+  </div>
+
+  <div>
+    <%= form.label :step_id, "Step", style: "display: block" %>
+    <%= form.collection_select :step_id, @steps, :id, ->(step) { "#{step.recipe.title} - #{step.order}. #{step.title.presence || step.action.truncate(50)}" }, prompt: "No specific step" %>
+  </div>
+
+  <div>
+    <%= form.label :amount, style: "display: block" %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.label :unit, style: "display: block" %>
+    <%= form.text_field :unit %>
+  </div>
+
+  <div>
+    <%= form.label :state, style: "display: block" %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div>
+    <%= form.label :preparation, style: "display: block" %>
+    <%= form.text_field :preparation %>
+  </div>
+
+  <div>
+    <%= form.label :section, style: "display: block" %>
+    <%= form.text_field :section %>
+  </div>
+
+  <div>
+    <%= form.label :optional, style: "display: block" %>
+    <%= form.checkbox :optional %>
+  </div>
+
+  <div>
+    <%= form.label :notes, style: "display: block" %>
+    <%= form.textarea :notes %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

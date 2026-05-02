@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recipe: one
+  condition: MyText
+  fix: MyText
+
+two:
+  recipe: two
+  condition: MyText
+  fix: MyText

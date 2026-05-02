@@ -1,0 +1,12 @@
+<% content_for :title, "Editing substitution" %>
+
+<h1>Editing substitution</h1>
+
+<%= render "form", substitution: @substitution %>
+
+<br>
+
+<div>
+  <%= link_to "Show this substitution", @substitution %> |
+  <%= link_to "Back to substitutions", substitutions_path %>
+</div>
