@@ -156,6 +156,7 @@ input[type="submit"] {
   grid-template-columns: minmax(0, 1fr) minmax(16rem, 20rem);
   gap: 1rem;
   align-items: start;
+  margin-top: 1rem;
 }
 
 .recipe-main {
@@ -169,6 +170,7 @@ input[type="submit"] {
   border-radius: 8px;
   background: #ffffff;
   padding: 1rem;
+  margin-top: 1rem;
 }
 
 .recipe-sidebar h2 {
