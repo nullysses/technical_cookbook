@@ -1,4 +1,4 @@
-<section id="recipe_ingredients_section" class="detail-section">
+<section id="recipe_ingredients_section" class="detail-section" data-controller="delete-modal">
   <div class="section-heading">
     <h2>Ingredients</h2>
     <%= link_to "Add recipe ingredient", new_recipe_ingredient_path, class: "button" %>
@@ -18,7 +18,7 @@
         <% procured = @procured_recipe_ingredient_ids.include?(recipe_ingredient.id) %>
         <tr>
           <td class="delete-cell">
-            <%= button_to recipe_ingredient_path(recipe_ingredient), method: :delete, class: "icon-button trash-button", form: { data: { turbo_confirm: "Remove #{recipe_ingredient.ingredient.name} from this recipe?" } }, aria: { label: "Remove #{recipe_ingredient.ingredient.name} from this recipe" } do %>
+            <%= button_to recipe_ingredient_path(recipe_ingredient), method: :delete, class: "icon-button trash-button", form: { data: { action: "submit->delete-modal#confirm", delete_modal_item_param: recipe_ingredient.ingredient.name } }, aria: { label: "Remove #{recipe_ingredient.ingredient.name} from this recipe" } do %>
               &#128465;
             <% end %>
           </td>
@@ -41,4 +41,15 @@
       <% end %>
     </tbody>
   </table>
+
+  <dialog class="app-modal" data-delete-modal-target="dialog">
+    <div class="app-modal-header">
+      <h2>Remove Ingredient</h2>
+    </div>
+    <p data-delete-modal-target="message">Remove this ingredient from this recipe?</p>
+    <div class="app-modal-actions">
+      <button type="button" class="button" data-action="delete-modal#cancel">Cancel</button>
+      <button type="button" class="button danger" data-action="delete-modal#delete">Remove</button>
+    </div>
+  </dialog>
 </section>

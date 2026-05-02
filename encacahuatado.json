@@ -1,0 +1,237 @@
+{
+  "title": "Soy Curl Encacahuatado",
+  "version": "1.0",
+  "language": "en",
+  "diet": ["vegan"],
+  "servings": {
+    "count": 3,
+    "unit": "people"
+  },
+  "yield": {
+    "amount": 900,
+    "unit": "g",
+    "description": "saucy main dish"
+  },
+  "tags": [
+    "mexican",
+    "soy curls",
+    "peanut sauce",
+    "main course",
+    "stovetop"
+  ],
+  "source_context": {
+    "created_from": "chat",
+    "notes": "Designed for soy curls, dried chiles, and a thick peanut-based sauce."
+  },
+  "equipment": [
+    "blender",
+    "skillet",
+    "saucepan",
+    "strainer"
+  ],
+  "ingredients": [
+    {
+      "name": "soy curls",
+      "amount": 120,
+      "unit": "g",
+      "state": "dry",
+      "preparation": "hydrated, squeezed",
+      "section": "protein",
+      "step_order": 1
+    },
+    {
+      "name": "dried guajillo chiles",
+      "amount": 3,
+      "unit": "whole",
+      "state": "dry",
+      "preparation": "stemmed, seeded, lightly toasted",
+      "section": "sauce",
+      "step_order": 2
+    },
+    {
+      "name": "roasted peanuts",
+      "amount": 70,
+      "unit": "g",
+      "state": "roasted",
+      "section": "sauce",
+      "step_order": 3
+    },
+    {
+      "name": "tomato",
+      "amount": 2,
+      "unit": "medium",
+      "state": "fresh",
+      "preparation": "roasted or pan-charred",
+      "section": "sauce",
+      "step_order": 3
+    },
+    {
+      "name": "garlic",
+      "amount": 2,
+      "unit": "cloves",
+      "preparation": "roasted or pan-charred",
+      "section": "sauce",
+      "step_order": 3
+    },
+    {
+      "name": "vegetable oil",
+      "amount": 2,
+      "unit": "tbsp",
+      "section": "cooking",
+      "step_order": 4
+    },
+    {
+      "name": "salt",
+      "amount": null,
+      "unit": null,
+      "preparation": "to taste",
+      "section": "seasoning",
+      "step_order": 5
+    }
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "title": "Hydrate the soy curls",
+      "action": "Soak soy curls in hot seasoned water until pliable, then squeeze firmly.",
+      "time": {
+        "amount": 10,
+        "unit": "min"
+      },
+      "temperature": {
+        "amount": 80,
+        "unit": "C",
+        "description": "hot but not boiling"
+      },
+      "targets": [
+        "soy curls fully hydrated",
+        "not waterlogged",
+        "able to brown in pan"
+      ],
+      "notes": [
+        "Squeezing matters because excess water blocks browning."
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Toast the chiles",
+      "action": "Briefly toast dried chiles on a dry skillet until fragrant, avoiding blackening.",
+      "time": {
+        "amount": 20,
+        "unit": "sec",
+        "per_side": true
+      },
+      "targets": [
+        "aromatic",
+        "slightly darkened",
+        "not bitter"
+      ],
+      "risk_points": [
+        "Burned chiles make the sauce bitter."
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Blend the sauce",
+      "action": "Blend chiles, peanuts, tomato, garlic, and enough water or broth to make a smooth sauce.",
+      "targets": [
+        "smooth",
+        "pourable but thick"
+      ],
+      "optional": {
+        "strain": true,
+        "reason": "Straining gives a cleaner Mexican salsa texture."
+      }
+    },
+    {
+      "order": 4,
+      "title": "Fry the sauce",
+      "action": "Heat oil, pour in the blended sauce, and fry until darker, glossier, and slightly reduced.",
+      "time": {
+        "amount": 8,
+        "unit": "min"
+      },
+      "heat_level": "medium",
+      "targets": [
+        "raw edge cooked out",
+        "sauce thickens",
+        "fat begins to gloss the surface"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Combine",
+      "action": "Add browned soy curls to the sauce and simmer until coated and flavorful.",
+      "time": {
+        "amount": 8,
+        "unit": "min"
+      },
+      "targets": [
+        "soy curls coated",
+        "sauce clings",
+        "savory and nutty"
+      ]
+    }
+  ],
+  "technique_notes": [
+    {
+      "topic": "browning",
+      "note": "Hydrated soy curls should be squeezed before searing; otherwise they steam instead of browning."
+    },
+    {
+      "topic": "sauce texture",
+      "note": "For a smoother restaurant-style sauce, strain after blending."
+    }
+  ],
+  "substitutions": [
+    {
+      "ingredient": "guajillo chiles",
+      "substitutes": [
+        {
+          "name": "ancho chile",
+          "ratio": "1:1",
+          "effect": "sweeter, darker, less bright"
+        }
+      ]
+    },
+    {
+      "ingredient": "roasted peanuts",
+      "substitutes": [
+        {
+          "name": "peanut butter",
+          "ratio": "1 tbsp per 20 g peanuts",
+          "effect": "smoother, more processed texture"
+        }
+      ]
+    }
+  ],
+  "adjustments": [
+    {
+      "condition": "sauce too thick",
+      "fix": "Add hot water or broth 1 tbsp at a time."
+    },
+    {
+      "condition": "sauce tastes flat",
+      "fix": "Add salt first, then a small splash of vinegar or lime if needed."
+    },
+    {
+      "condition": "sauce tastes bitter",
+      "fix": "Dilute slightly, add a small amount of sugar, and avoid further reduction."
+    }
+  ],
+  "storage": {
+    "refrigerator": {
+      "duration": 4,
+      "unit": "days"
+    },
+    "freezer": {
+      "duration": 2,
+      "unit": "months"
+    },
+    "reheat": "Reheat gently with a splash of water."
+  },
+  "nutrition_notes": [
+    "High-protein vegan main dish.",
+    "Peanut-based sauce is calorie-dense."
+  ]
+}

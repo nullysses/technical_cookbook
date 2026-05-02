@@ -329,6 +329,45 @@ dd {
   justify-content: center;
 }
 
+.app-modal {
+  width: min(92vw, 28rem);
+  border: 1px solid #d8d2c6;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1f2933;
+  padding: 0;
+  box-shadow: 0 1.25rem 3rem rgb(31 41 51 / 24%);
+}
+
+.app-modal::backdrop {
+  background: rgb(36 59 63 / 44%);
+}
+
+.app-modal-header {
+  border-bottom: 4px solid #d69e2e;
+  background: #243b3f;
+  color: #ffffff;
+  padding: 0.85rem 1rem;
+}
+
+.app-modal h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.app-modal p {
+  margin: 0;
+  padding: 1rem;
+}
+
+.app-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  border-top: 1px solid #e7e1d6;
+  padding: 1rem;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
