@@ -1,87 +1,124 @@
-<%= form_with(model: recipe) do |form| %>
+<%= form_with(model: recipe, class: "recipe-form") do |form| %>
   <% if recipe.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+    <section class="form-errors">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prevented this recipe from being saved</h2>
 
       <ul>
-        <% recipe.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
-    </div>
+    </section>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+  <section class="form-section">
+    <header class="form-section__header">
+      <h2>Identity</h2>
+      <p>Basic information used to identify the recipe.</p>
+    </header>
 
-  <div>
-    <%= form.label :version, style: "display: block" %>
-    <%= form.text_field :version %>
-  </div>
+    <div class="form-grid">
+      <div class="field field--wide">
+        <%= form.label :title, "Title", class: "field__label field__label--required" %>
+        <%= form.text_field :title, class: "field__control", placeholder: "Seitan BBQ ribs", required: true %>
+      </div>
 
-  <div>
-    <%= form.label :language, style: "display: block" %>
-    <%= form.text_field :language %>
-  </div>
+      <div class="field">
+        <%= form.label :version, class: "field__label" %>
+        <%= form.text_field :version, class: "field__control", placeholder: "v1, draft, tested" %>
+      </div>
 
-  <div>
-    <%= form.label :diet, style: "display: block" %>
-    <%= form.textarea :diet %>
-  </div>
+      <div class="field">
+        <%= form.label :language, class: "field__label" %>
+        <%= form.text_field :language, class: "field__control", placeholder: "en, es-MX" %>
+      </div>
+    </div>
+  </section>
 
-  <div>
-    <%= form.label :tags, style: "display: block" %>
-    <%= form.textarea :tags %>
-  </div>
+  <section class="form-section">
+    <header class="form-section__header">
+      <h2>Classification</h2>
+      <p>Diet, tags, and equipment for filtering and planning.</p>
+    </header>
 
-  <div>
-    <%= form.label :equipment, style: "display: block" %>
-    <%= form.textarea :equipment %>
-  </div>
+    <div class="form-grid">
+      <div class="field">
+        <%= form.label :diet, class: "field__label" %>
+        <%= form.text_area :diet, class: "field__control field__control--textarea", placeholder: "vegan, gluten-free, high-protein" %>
+      </div>
 
-  <div>
-    <%= form.label :nutrition_notes, style: "display: block" %>
-    <%= form.textarea :nutrition_notes %>
-  </div>
+      <div class="field">
+        <%= form.label :tags, class: "field__label" %>
+        <%= form.text_area :tags, class: "field__control field__control--textarea", placeholder: "weeknight, Mexican, seitan, spicy" %>
+      </div>
 
-  <div>
-    <%= form.label :servings_count, style: "display: block" %>
-    <%= form.text_field :servings_count %>
-  </div>
+      <div class="field field--wide">
+        <%= form.label :equipment, class: "field__label" %>
+        <%= form.text_area :equipment, class: "field__control field__control--textarea", placeholder: "oven, blender, pressure cooker" %>
+      </div>
+    </div>
+  </section>
 
-  <div>
-    <%= form.label :servings_unit, style: "display: block" %>
-    <%= form.text_field :servings_unit %>
-  </div>
+  <section class="form-section">
+    <header class="form-section__header">
+      <h2>Yield and servings</h2>
+      <p>How much the recipe produces and how it should be portioned.</p>
+    </header>
 
-  <div>
-    <%= form.label :yield_amount, style: "display: block" %>
-    <%= form.text_field :yield_amount %>
-  </div>
+    <div class="form-grid form-grid--four">
+      <div class="field">
+        <%= form.label :servings_count, class: "field__label" %>
+        <%= form.number_field :servings_count, class: "field__control", min: 0, step: 1 %>
+      </div>
 
-  <div>
-    <%= form.label :yield_unit, style: "display: block" %>
-    <%= form.text_field :yield_unit %>
-  </div>
+      <div class="field">
+        <%= form.label :servings_unit, class: "field__label" %>
+        <%= form.text_field :servings_unit, class: "field__control", placeholder: "portions" %>
+      </div>
 
-  <div>
-    <%= form.label :yield_description, style: "display: block" %>
-    <%= form.text_field :yield_description %>
-  </div>
+      <div class="field">
+        <%= form.label :yield_amount, class: "field__label" %>
+        <%= form.number_field :yield_amount, class: "field__control", min: 0, step: "any" %>
+      </div>
 
-  <div>
-    <%= form.label :source_created_from, style: "display: block" %>
-    <%= form.text_field :source_created_from %>
-  </div>
+      <div class="field">
+        <%= form.label :yield_unit, class: "field__label" %>
+        <%= form.text_field :yield_unit, class: "field__control", placeholder: "g, ml, pieces" %>
+      </div>
 
-  <div>
-    <%= form.label :source_notes, style: "display: block" %>
-    <%= form.textarea :source_notes %>
-  </div>
+      <div class="field field--wide">
+        <%= form.label :yield_description, class: "field__label" %>
+        <%= form.text_field :yield_description, class: "field__control", placeholder: "one medium loaf, 12 patties, 1 tray" %>
+      </div>
+    </div>
+  </section>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <section class="form-section">
+    <header class="form-section__header">
+      <h2>Notes and source</h2>
+      <p>Optional metadata for nutrition, provenance, and adaptation history.</p>
+    </header>
+
+    <div class="form-grid">
+      <div class="field field--wide">
+        <%= form.label :nutrition_notes, class: "field__label" %>
+        <%= form.text_area :nutrition_notes, class: "field__control field__control--textarea-large" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :source_created_from, class: "field__label" %>
+        <%= form.text_field :source_created_from, class: "field__control", placeholder: "original, adapted, generated, translated" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :source_notes, class: "field__label" %>
+        <%= form.text_area :source_notes, class: "field__control field__control--textarea" %>
+      </div>
+    </div>
+  </section>
+
+  <footer class="form-actions">
+    <%= link_to "Cancel", recipes_path, class: "button button--secondary" %>
+    <%= form.submit class: "button button--primary" %>
+  </footer>
 <% end %>

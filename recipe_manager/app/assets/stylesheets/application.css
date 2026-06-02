@@ -437,3 +437,242 @@ dd {
     position: static;
   }
 }
+
+:root {
+  --color-bg: #f6f2ea;
+  --color-surface: #ffffff;
+  --color-text: #172126;
+  --color-muted: #6b7280;
+  --color-border: #ded6c8;
+  --color-accent: #163236;
+  --color-accent-strong: #0f2529;
+  --color-gold: #c69c3f;
+  --color-danger-bg: #fff1f2;
+  --color-danger-border: #fecdd3;
+  --color-danger-text: #9f1239;
+  --radius-lg: 18px;
+  --radius-md: 10px;
+  --shadow-card: 0 18px 45px rgba(20, 30, 35, 0.08);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.page-shell {
+  width: min(960px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 16px 0 40px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-kicker {
+  margin: 0 0 8px;
+  color: var(--color-gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.page-header p {
+  max-width: 680px;
+  margin: 12px 0 0;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.form-card {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.recipe-form {
+  padding: 28px;
+}
+
+.form-section {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.recipe-form > .form-section:first-of-type,
+.form-errors + .form-section {
+  padding-top: 0;
+}
+
+.form-section__header {
+  margin-bottom: 18px;
+}
+
+.form-section__header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.form-section__header p {
+  margin: 6px 0 0;
+  color: var(--color-muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.form-grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.field {
+  min-width: 0;
+}
+
+.field--wide {
+  grid-column: 1 / -1;
+}
+
+.field__label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.field__label--required::after {
+  color: var(--color-gold);
+  content: " *";
+}
+
+.field__control {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #d8d1c5;
+  border-radius: var(--radius-md);
+  background: #fffefa;
+  color: var(--color-text);
+  padding: 11px 12px;
+  font: inherit;
+  line-height: 1.4;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.field__control:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(198, 156, 63, 0.18);
+}
+
+.field__control--textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.field__control--textarea-large {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.form-errors {
+  margin-bottom: 24px;
+  padding: 16px 18px;
+  border: 1px solid var(--color-danger-border);
+  border-radius: var(--radius-md);
+  background: var(--color-danger-bg);
+  color: var(--color-danger-text);
+}
+
+.form-errors h2 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.form-errors ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 24px;
+}
+
+.button--primary,
+.button--secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+.button.button--primary {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.button.button--primary:hover {
+  border-color: var(--color-accent-strong);
+  background: var(--color-accent-strong);
+}
+
+.button--secondary {
+  border-color: var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+}
+
+.button--secondary:hover {
+  background: #f8f4ec;
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(100% - 24px, 960px);
+    padding-top: 0;
+  }
+
+  .recipe-form {
+    padding: 20px;
+  }
+
+  .form-grid,
+  .form-grid--four {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions .button {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}

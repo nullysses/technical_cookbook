@@ -1,11 +1,13 @@
 <% content_for :title, "New recipe" %>
 
-<h1>New recipe</h1>
+<div class="page-shell">
+  <header class="page-header">
+    <p class="page-kicker">Recipe manager</p>
+    <h1>New recipe</h1>
+    <p>Create a structured recipe entry with yield, diet, equipment, and source metadata.</p>
+  </header>
 
-<%= render "form", recipe: @recipe %>
-
-<br>
-
-<div>
-  <%= link_to "Back to recipes", recipes_path %>
+  <div class="form-card">
+    <%= render "form", recipe: @recipe %>
+  </div>
 </div>

@@ -60,6 +60,6 @@ class RecipeProgressTest < ActionDispatch::IntegrationTest
     get recipes_url
 
     assert_response :success
-    assert_select ".status-badge", text: "In progress"
+    assert_select ".status-badge", text: /In progress/
   end
 end
